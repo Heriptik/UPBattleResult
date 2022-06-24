@@ -1,6 +1,7 @@
 package xyz.ultrapixelmon.pepefab.upbattleresult;
 
 import com.pixelmonmod.pixelmon.Pixelmon;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -31,6 +32,7 @@ public class Main
     public void init(FMLInitializationEvent event)
     {
         Pixelmon.EVENT_BUS.register(new PlayerBattle());
+        MinecraftForge.EVENT_BUS.register(new PlayerBattle());
         logger.info("[UPBattleResult] Plugin initialisation Version: " + Main.VERSION);
     }
 
