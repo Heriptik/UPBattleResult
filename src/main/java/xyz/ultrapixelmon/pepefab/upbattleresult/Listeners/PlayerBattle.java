@@ -46,12 +46,13 @@ public class PlayerBattle {
                     players.sendMessage(new TextComponentString(ChatUtils.replaceTextFormating(Config.Message.replace("%winner%", winner).replace("%loser%", loser))));
                 }
             }
-        } else {
+        }
+        if (event.results.get(battleParticipant2) == BattleResults.VICTORY) {
             String winner = battleParticipant2.getDisplayName();
             String loser = battleParticipant1.getDisplayName();
 
             for (EntityPlayerMP players : server.getMinecraftServerInstance().getServer().getPlayerList().getPlayers()) {
-                double playersRange = Math.sqrt((battleParticipant1.getEntity().posX - (int) players.posX) * (battleParticipant1.getEntity().posX - (int) players.posX) + (battleParticipant1.getEntity().posZ - (int) players.posZ) * (battleParticipant1.getEntity().posZ - (int) players.posZ));
+                double playersRange = Math.sqrt((battleParticipant2.getEntity().posX - (int) players.posX) * (battleParticipant2.getEntity().posX - (int) players.posX) + (battleParticipant2.getEntity().posZ - (int) players.posZ) * (battleParticipant2.getEntity().posZ - (int) players.posZ));
                 if (Config.Range >= playersRange) {
                     players.sendMessage(new TextComponentString(ChatUtils.replaceTextFormating(Config.Message.replace("%winner%", winner).replace("%loser%", loser))));
                 }
@@ -65,5 +66,4 @@ public class PlayerBattle {
             endBattleCommand = true;
         }
     }
-
 }
